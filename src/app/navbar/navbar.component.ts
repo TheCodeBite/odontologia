@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-
-  constructor() { }
+  email = '';
+  password = '';
+  constructor(private rote:Router) { }
 
   ngOnInit() {
   }
 
+  iniciar_sesion(){
+    if(this.email == 'yacziri@hotmail.com' && this.password == "1234567890"){
+      localStorage.setItem('doctora', 'Yazciri Mendoza Sánchez');
+      this.rote.navigate(['home']);
+    }
+  }
 }

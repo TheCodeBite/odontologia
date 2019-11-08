@@ -1,0 +1,10 @@
+.jucio {
+    background-image: url("../../assets/img/dientes/juicio.png");
+    height: 2em;
+    width: 2em;
+}
+
+.deleteAll {
+    border-radius: 100%;
+    outline: none;
+}

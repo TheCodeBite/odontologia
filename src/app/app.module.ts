@@ -19,6 +19,8 @@ import { PacienteComponent } from './paciente/paciente.component';
 import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ServiceComponent } from './service/service.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { NavbarComponent } from './navbar/navbar.component';
     PacienteComponent,
     AboutComponent,
     HomeComponent,
-    NavbarComponent
+    NavbarComponent,
+    ServiceComponent,
+    FooterComponent
   ],
   imports: [
     FormsModule,
