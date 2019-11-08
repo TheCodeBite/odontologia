@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: "AIzaSyCeP8-1-9-URkS9ZQcqeHN1j21x6dsyLiE",
+    authDomain: "odontologia-7f880.firebaseapp.com",
+    databaseURL: "https://odontologia-7f880.firebaseio.com",
+    projectId: "odontologia-7f880",
+    storageBucket: "odontologia-7f880.appspot.com",
+    messagingSenderId: "782276666162",
+    appId: "1:782276666162:web:d7ad5636c70db6a0c82d2b",
+    measurementId: "G-F27JSBYX1L"
+  }
 };
 
 /*
