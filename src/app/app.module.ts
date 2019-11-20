@@ -21,6 +21,7 @@ import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ServiceComponent } from './service/service.component';
 import { FooterComponent } from './footer/footer.component';
+import { HistorialComponent } from './historial/historial.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { FooterComponent } from './footer/footer.component';
     HomeComponent,
     NavbarComponent,
     ServiceComponent,
-    FooterComponent
+    FooterComponent,
+    HistorialComponent
   ],
   imports: [
     FormsModule,

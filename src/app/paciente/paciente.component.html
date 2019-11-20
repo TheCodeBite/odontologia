@@ -1,1 +1,282 @@
-<p>paciente works!</p>
+<app-navbar></app-navbar>
+
+<div class="container-fluid" style="margin-top: 2em;">
+    <div>
+        <button data-toggle="modal" data-target=".bd-example-modal-xl" class="btn btn-primary" style="font-size: 18px; border-radius: 100%;">
+            <strong>+</strong>
+        </button>
+    </div>
+    <table class="table" style="margin-top: 1em;">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Teléfono</th>
+            <th scope="col">Direccion</th>
+            <th scope="col">Tipo de sangre</th>
+            <th scope="col">Crear Receta</th>
+            <th scope="col">Historial Clinico</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of allUsers; let i = index">
+            <th scope="row">{{i + 1}}</th>
+            <td>{{item.nombre}}</td>
+            <td>{{item.telefono}}</td>
+            <td>{{item.direccion}}</td>
+            <td>{{item.sangre}}</td>
+            <td> <button class="btn btn-sm btn-primary" (click)="recetar_click(item.nombre, i)" data-toggle="modal" data-target="#RecetaMedica">Recetar</button> </td>
+            <td> <button class="btn btn-sm btn-success" (click)="historial(i)">Historial</button> </td>
+          </tr>
+        </tbody>
+    </table>
+
+    <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Nuevo paciente</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <form [formGroup]="paciente">
+                        <h2>DATOS PERSONALES</h2><hr>
+                        <label>Nombre Completo:</label>
+                        <input formControlName="nombre" type="text" class="form-control">
+
+                        <div class="row">
+                            <div class="col">
+                                <label>Sexo:</label>
+                                <select formControlName="sexo" class="form-control">
+                                    <option value="Hombre">Hombre</option>
+                                    <option value="Hombre">Mujer</option>
+                                </select>
+                            </div>
+                            
+                            <div class="col">
+                                <label>Dirección:</label>
+                                <input formControlName="direccion" type="text" class="form-control">
+                            </div>
+
+                            <div class="col">
+                                <label>Ocupación:</label>
+                                <input type="text" formControlName="ocupacion" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <label>Teléfono:</label>
+                                <input formControlName="telefono" type="tel" class="form-control">
+                            </div>
+
+                            <div class="col">
+                                <label>Edad:</label>
+                                <input formControlName="edad" type="number" class="form-control">
+                            </div>
+
+                            <div class="col">
+                                <label>Estado Civil</label>
+                                <select formControlName="estado" class="form-control">
+                                    <option value="soltero(a)">Soltero(a)</option>
+                                    <option value="casado(a)">Casado(a)</option>
+                                    <option value="divorsiado(a)">divorsiado(a)</option>
+                                    <option value="viudo(a)">Viudo(a)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <h2 style="margin-top: 1em;">ANTECEDENTES PERSONALES NO PATOLÓGICOS</h2>
+                        <hr>
+
+                        <div class="row" style="text-align: center; margin-top: 1em;">
+                            <div class="col">
+                                <input formControlName="diabetes" type="checkbox" value="1" class="form-check-input">
+                                <label>Diabetes</label>
+                            </div>
+
+                            <div class="col">
+                                <input formControlName="dificultadrespiratoria" type="checkbox" value="1" class="form-check-input">
+                                <label>Dificultad respiratoria</label>
+                            </div>
+
+                            <div class="col">
+                                <input formControlName="hipertension" type="checkbox" value="1" class="form-check-input">
+                                <label>Hipertensión</label>
+                            </div>
+
+                            <div class="col">
+                                <input formControlName="cardiopatias" type="checkbox" value="1" class="form-check-input">
+                                <label>Cardiopatias</label>
+                            </div>
+                        </div>
+
+                        <div class="row" style="text-align: center; margin-top: 1em;">
+                            <div class="col">
+                                <input formControlName="hemorragia" type="checkbox" value="1" class="form-check-input">
+                                <label>Hemorragia</label>
+                            </div>
+
+                            <div class="col">
+                                <input formControlName="hepatitis" type="checkbox" value="1" class="form-check-input">
+                                <label>Hepatitis</label>
+                            </div>
+
+                            <div class="col">
+                                <input type="checkbox" formControlName="endocrino" value="1" class="form-check-input">
+                                <label>Endocrino</label>
+                            </div>
+
+                            <div class="col">
+                                <input type="checkbox" formControlName="embarazo" value="1" class="form-check-input">
+                                <label>Embarazo o abortos</label>
+                            </div>
+                        </div>
+
+                        <div class="row" style="text-align: center; margin-top: 1em;">
+                            <div class="col">
+                                <input type="checkbox" formControlName="convulsiones" value="1" class="form-check-input">
+                                <label>Convulsiones</label>
+                            </div>
+
+                            <div class="col">
+                                <input type="checkbox" formControlName="renales" value="1" class="form-check-input">
+                                <label>Renales</label>
+                            </div>
+
+                            <div class="col">
+                                <input type="checkbox" value="1" formControlName="fiebre" class="form-check-input">
+                                <label>Fiebre reumática</label>
+                            </div>
+
+                            <div class="col">
+                                <input type="checkbox" formControlName="alergia" value="1" class="form-check-input">
+                                <label>Alergias</label>
+                            </div>
+                        </div>
+
+                        <h2 style="margin-top: 1em;">ANTECEDENTES PERSONALES NO PATOLÓGICOS</h2>
+                        <hr>
+
+                        <div class="row">
+                            <div class="col">
+                                <label>Tipo de sange:</label>
+                                <input formControlName="sangre" type="text" class="form-control">
+                            </div>
+
+                            <div class="col">
+                                <label>talla:</label>
+                                <input formControlName="talla" type="number" class="form-control">
+                            </div>
+
+                            <div class="col">
+                                <label>Peso:</label>
+                                <input formControlName="peso" type="number" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <label>Adicciones:</label>
+                                <textarea formControlName="adicciones" type="text" class="form-control"> </textarea>
+                            </div>
+
+                            <div class="col">
+                                <label>Hereditarios:</label>
+                                <textarea formControlName="hereditarios" type="text" class="form-control"> </textarea>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <label>Glucosa en la sangre:</label>
+                                <input formControlName="glucosa" type="number" class="form-control">
+                            </div>
+
+                            <div class="col">
+                                <label>T/A (tensión arterial):</label>
+                                <input formControlName="ta" type="number" class="form-control">
+                            </div>
+                        </div>
+
+                        <div style="text-align: center; margin-top: 1em;">
+                            <img src="../../assets/img/all_dientes.jpg" class="img-fluid" alt="Responsive image">
+                        </div>
+
+                        <div class="row" style="text-align: center; margin-top: 1em;">
+                            <div class="col">
+                                <input formControlName="dientes" type="text" class="form-control">
+                                <label>Dientes dañados</label>
+                            </div>
+
+                            <div class="col">
+                                <input formControlName="atm" type="text" class="form-control">
+                                <label>ATM</label>
+                            </div>
+
+                            <div class="col">
+                                <input formControlName="tejidos" type="text" class="form-control">
+                                <label>Tejidos</label>
+                            </div>
+                        </div>
+                        <label>Observaciones:</label>
+                        <textarea formControlName="observaciones" class="form-control"></textarea>
+                        
+                        <button style="margin-top: 1em;" data-dismiss="modal" type="submit" class="btn btn-success btn-lg btn-block" (click)="register(paciente.value)">Agregar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+      
+    <!-- Modal Receta Medica-->
+    <div class="modal fade bd-example-modal-lg" id="RecetaMedica" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Receta para: {{paciente_name}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="receta">
+                        <div class="row">
+                            <div class="col">
+                                <label >Indicaciones:</label>
+                                <textarea formControlName="indicaciones" class="form-control"></textarea>
+                            </div>
+
+                            <div class="col">
+                                <label>Receta Médica:</label>
+                                <textarea formControlName="receta" class="form-control"></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col">
+                                <label>Diagnóstico:</label>
+                                <input class="form-control" formControlName="diagnostico">
+                            </div>
+
+                            <div class="col">
+                                <label>Terminologia:</label>
+                                <input class="form-control" formControlName="terminologia">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="crearReceta(receta.value)" > Crear</button>
+                </div>
+            </div>
+            </div>
+        </div>
+</div>
+
+<app-footer></app-footer>
