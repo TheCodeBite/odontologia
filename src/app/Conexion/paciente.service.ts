@@ -18,7 +18,7 @@ export class PacienteService {
     return this.firebase.list('recetas').push(receta)
   }
 
-
+  receta: any;
 
 
   
@@ -35,7 +35,24 @@ export class PacienteService {
     return keys;
   }
 
-  receta: any;
+  temporal: any;
+  getKeysRecetas(key:any){
+    let keys = [];
+    console.log("key" + key);
+    
+    this.firebase.list('recetas').snapshotChanges().subscribe(res => {
+      res.forEach(doc => {
+        this.temporal = doc.payload.val()
+        if(this.temporal.idPaciente == key){
+          keys.push(doc.key);
+          console.log(doc.key);
+          
+        }
+      })
+    });
+
+    return keys;
+  }
 
   getReceta(key){
     let receta = []

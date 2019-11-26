@@ -7,6 +7,7 @@ import { PacienteComponent } from './paciente/paciente.component';
 import { RecetaComponent } from './receta/receta.component';
 import { ServiceComponent } from './service/service.component';
 import { HistorialComponent } from './historial/historial.component';
+import { SearchComponent } from './search/search.component';
 
 
 const routes: Routes = [
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'paciente', component: PacienteComponent },
   { path: 'receta/:id', component: RecetaComponent},
   { path: 'service', component: ServiceComponent},
-  { path: 'historial/:id', component: HistorialComponent}
+  { path: 'historial/:id', component: HistorialComponent},
+  { path: 'search', component: SearchComponent}
 ];
 
 @NgModule({
