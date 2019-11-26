@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { __generator } from 'tslib';
-
+import { Component, OnInit, ElementRef ,ViewChild } from '@angular/core';
 
 //PDF
-import * as jsPDF from 'jspdf'
-import * as html2canvas from 'html2canvas';
+import * as jspdf from 'jspdf'
+import html2canvas from 'html2canvas'
+import { ActivatedRoute } from '@angular/router';
+import { PacienteService } from '../Conexion/paciente.service';
 
 @Component({
   selector: 'app-receta',
@@ -12,24 +12,33 @@ import * as html2canvas from 'html2canvas';
   styleUrls: ['./receta.component.css']
 })
 export class RecetaComponent implements OnInit {
+  
+  key = '';
 
-  constructor() { }
+  receta: any;
 
+  constructor(private _route: ActivatedRoute, private db: PacienteService) { }
+  
   ngOnInit() {
+    this.key = this._route.snapshot.paramMap.get('id');
+    this.receta = this.db.getReceta(this.key)
 
+    console.log(this.receta);
   }
 
-  pdf(){
+  public captureScreen(){  
     html2canvas(document.getElementById('contenido'),{
       allowTaint: true,
       useCORS: false,
       scale: 1
     }).then(function(canvas) {
       var img = canvas.toDataURL("image/png");
-      var doc = new jsPDF();
+      var doc = new jspdf();
       doc.addImage(img, 'JPEG', 0, 20);
       doc.save('receta.pdf');
     })
-  }
+  }  
+
+  
 
 }

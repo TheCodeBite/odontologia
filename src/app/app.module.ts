@@ -22,6 +22,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ServiceComponent } from './service/service.component';
 import { FooterComponent } from './footer/footer.component';
 import { HistorialComponent } from './historial/historial.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { HistorialComponent } from './historial/historial.component';
     NavbarComponent,
     ServiceComponent,
     FooterComponent,
-    HistorialComponent
+    HistorialComponent,
+    SearchComponent
   ],
   imports: [
     FormsModule,

@@ -37,6 +37,19 @@ export class PacienteService {
 
   receta: any;
 
+  getReceta(key){
+    let receta = []
+    
+    this.firebase.list('recetas').snapshotChanges().subscribe(res => {
+      res.forEach(doc =>{
+        if(key == doc.key){
+          receta.push(doc.payload.val())        
+        }
+      });
+    });
+    return receta
+  }
+
   getAllRecetas(key){
     let recetas = [];
     

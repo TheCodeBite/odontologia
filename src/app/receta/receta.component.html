@@ -1,6 +1,5 @@
-
-<div class="container" id="contenido">
-    <div style="border: 2px solid black; border-radius: 8px; width: 68%;">
+<div class="container" id="contenido" *ngFor="let item of receta">
+    <div style="border: 2px solid black; border-radius: 8px; width: 80%;">
         <img src="../../assets/img/LOGO5.png" class="rounded float-left" alt="...">
         <p><strong>3 av. Poniente. #106</strong></p>
         <p><strong>Entre Calle central y 2 av. sur</strong></p>
@@ -8,38 +7,39 @@
     </div>
     <br>
     
-    <div style="width: 68%; text-align: center; font-size: 12px;">
+    <div style="width: 80%; text-align: center; font-size: 12px;">
         <div class="row">
             <div class="col">
                 PACIENTE: 
             </div>
 
             <div class="col">
-                Kevin Alejandro Martinez Hernandez
+                {{item.nombre}}
             </div>
 
             <div class="col">
-                SEXO: Hombre
+                SEXO: {{item.sexo}}
             </div>
         </div>
 
         <div class="row" style="margin-top: 1em;">
             <div class="col">
-                EDAD: 40 años
+                EDAD: {{item.edad}} años
             </div>
 
             <div class="col">
-                ALERGIAS: NEGADO
+                ALERGIAS: {{item.alergia}}
             </div>
 
             <div class="col">
-                FECHA: 30-12-1996
+                FECHA: {{item.fecha}}
             </div>
         </div>
         
     </div>
-
-    <table style="width: 68%; text-align: center; font-size: 12px">
+    <br>
+    <b style="font-size: 12px; margin-left: 41%;">FOLIO:</b> {{key}}
+    <table style="width: 80%; text-align: center; font-size: 12px">
         <tr>
             <th>
                 DIAGNÓSTICO
@@ -50,14 +50,50 @@
         </tr>
         <tr>
             <td>
-                aca va todo lo del diagnostico
+                {{item.diagnostico}}
             </td>
             <td>
-                aca va la terminologia
+                {{item.terminologia}}
             </td>
         </tr>
     </table>
 
+    <br>
+    <p>
+        <b>
+            <p>DOSIS Y DURACIÓN DEL MEDICAMENTO:</p>
+        </b>
+        {{item.receta}}
+    </p>
+
+    <p>
+        <b>
+            <p>INDICACIONES:</p>
+        </b>
+        {{item.indicaciones}}
+    </p>
+
+    <br>
+    
+    <img src="../../assets/img/qr_img.png" height="100px" width="100px">
+
+    <div style="width: 80%; text-align: center;">
+        <p>
+            C.D. YACZIRI MENDOZA SANCHEZ
+        </p>
+
+        <p>
+            UNIVERSIDAD DE CIENCIAS Y ARTES DE CHIAPAS
+        </p>
+
+        <p>
+            CED.PROF. 10947093
+        </p>
+    </div>
 </div>
 
-<button class="btn btn-primary btn-sm" (click)="pdf()">PDF</button>
+<div class="container">
+    <div style="width: 80%; text-align: center; font-size: 12px;">
+        <button class="btn btn-primary btn-sm" (click)="captureScreen()">Imprimir</button>
+    </div>
+</div>

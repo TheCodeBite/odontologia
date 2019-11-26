@@ -2,7 +2,7 @@
 
 <div class="container-fluid" style="margin-top: 2em;">
     <div>
-        <button data-toggle="modal" data-target=".bd-example-modal-xl" class="btn btn-primary" style="font-size: 18px; border-radius: 100%;">
+        <button data-toggle="modal" (click)="new()" data-target=".bd-example-modal-xl" class="btn btn-primary" style="font-size: 18px; border-radius: 100%;">
             <strong>+</strong>
         </button>
     </div>
@@ -15,7 +15,8 @@
             <th scope="col">Direccion</th>
             <th scope="col">Tipo de sangre</th>
             <th scope="col">Crear Receta</th>
-            <th scope="col">Historial Clinico</th>
+            <th scope="col">Detalles</th>
+            <th scope="col">Historial</th>
           </tr>
         </thead>
         <tbody>
@@ -25,7 +26,8 @@
             <td>{{item.telefono}}</td>
             <td>{{item.direccion}}</td>
             <td>{{item.sangre}}</td>
-            <td> <button class="btn btn-sm btn-primary" (click)="recetar_click(item.nombre, i)" data-toggle="modal" data-target="#RecetaMedica">Recetar</button> </td>
+            <td> <button class="btn btn-sm btn-primary" (click)="recetar_click(item.nombre,item.edad, item.alergia, item.sexo, i)" data-toggle="modal" data-target="#RecetaMedica">Recetar</button> </td>
+            <td> <button class="btn btn-sm btn-info" data-toggle="modal" data-target=".bd-example-modal-xl" (click)="detalles(item)">Detalles</button> </td>
             <td> <button class="btn btn-sm btn-success" (click)="historial(i)">Historial</button> </td>
           </tr>
         </tbody>
@@ -35,7 +37,7 @@
         <div class="modal-dialog modal-xl" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Nuevo paciente</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">{{title}}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -225,7 +227,7 @@
                         <label>Observaciones:</label>
                         <textarea formControlName="observaciones" class="form-control"></textarea>
                         
-                        <button style="margin-top: 1em;" data-dismiss="modal" type="submit" class="btn btn-success btn-lg btn-block" (click)="register(paciente.value)">Agregar</button>
+                        <button *ngIf="add" style="margin-top: 1em;" data-dismiss="modal" type="submit" class="btn btn-success btn-lg btn-block" (click)="register(paciente.value)">Agregar</button>
                     </form>
                 </div>
             </div>
