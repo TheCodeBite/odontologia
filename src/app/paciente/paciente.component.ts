@@ -22,7 +22,7 @@ export class PacienteComponent implements OnInit {
   index = null;
 
   edad = '';
-  alergira = '';
+  alergia = '';
   paciente_name = '';
   sexo = '';
 
@@ -61,19 +61,20 @@ export class PacienteComponent implements OnInit {
       edad: [''],
       sexo: [''],
       estado: [''],
+      curp: [''],
 
-      diabetes: [0],
-      dificultadrespiratoria: [0],
-      hipertension: [0],
-      cardiopatias: [0],
-      hemorragia: [0],
-      hepatitis: [0],
-      endocrino: [0],
-      embarazo: [0],
-      convulsiones: [0],
-      renales: [0],
-      fiebre: [0],
-      alergia: [0],
+      diabetes: false,
+      dificultadrespiratoria: false,
+      hipertension: false,
+      cardiopatias: false,
+      hemorragia: false,
+      hepatitis: false,
+      endocrino: false,
+      embarazo: false,
+      convulsiones: false,
+      renales: false,
+      fiebre: false,
+      alergia: false,
 
       sangre: [''],
       talla: [''],
@@ -100,12 +101,17 @@ export class PacienteComponent implements OnInit {
   recetar_click(name, edad, alergia, sexo, position){
     this.paciente_name = name;
     this.edad = edad;
-    this.alergira = alergia;
+    this.alergia = alergia;
     this.index = position;
     this.sexo = sexo;
+
+    console.log("alergia " + this.alergia, " edad " + this.edad);
+    
   }
 
   register(form: any){
+    console.log(form);
+    
     this.db.agregar(form);
     this.allUsers = []
     this.ngOnInit();
@@ -115,11 +121,68 @@ export class PacienteComponent implements OnInit {
 
     let hoy = new Date();
     form.fecha = hoy.toDateString();
+
     form.idPaciente = this.keys[this.index]
     form.nombre = this.paciente_name;
     form.edad = this.edad;
-    form.alergia = this.alergira;
+    form.alergia = this.alergia;
     form.sexo = this.sexo;
+    if(form.diagnostico == 'CARIES DENTAL'){
+      form.terminologia = 'K02';
+    }
+    if(form.diagnostico == 'CARIES LIMITADA AL ESMALTE'){
+      form.terminologia = 'K020';
+    }
+    if(form.diagnostico == 'CARIES DE LA DENTINA'){
+      form.terminologia = 'K021';
+    }
+    if(form.diagnostico == 'CARIES DEL CEMENTO'){
+      form.terminologia = 'K022';
+    }
+    if(form.diagnostico == 'CARIES DENTARIA DETENIDA'){
+      form.terminologia = 'K023';
+    }
+    if(form.diagnostico == 'CARIES CON EXPOSICION PULPAR'){
+      form.terminologia = 'K025';
+    }
+    if(form.diagnostico == 'OTRAS CARIES DENTALES'){
+      form.terminologia = 'K028';
+    }
+    if(form.diagnostico == 'CARIES DENTAL, NO ESPECIFICADA'){
+      form.terminologia = 'K029'
+    }
+    if(form.diagnostico == 'PERIODONTOSIS'){
+      form.terminologia = 'K054';
+    }
+    if(form.diagnostico == 'GINGIVITIS Y ENFERMEDADES PERIODONTALES'){
+      form.terminologia = 'K05';
+    }
+    if(form.diagnostico == 'PERIODONTITIS AGUDA'){
+      form.terminologia = 'K052';
+    }
+    if(form.diagnostico == 'PERIODONTITIS CRONICA'){
+      form.terminologia = 'K053';
+    }
+    if(form.diagnostico == 'ESTOMATITIS AFTOSA RECURRENTE'){
+      form.terminologia = 'K120';
+    }
+    if(form.diagnostico == 'PULPITIS'){
+      form.terminologia == 'K040';
+    }
+    if(form.diagnostico == 'CELULITIS Y ABSCESO DE BOCA'){
+      form.terminologia = 'K122';
+    }
+    if(form.diagnostico == 'OTRO DOLOR CRONICO'){
+      form.terminologia = 'R522';
+    }
+    if(form.diagnostico == 'TRASTORNOS DE LA ARTICULACION TEMPOROMAXILAR'){
+      form.terminologia = 'K076';
+    }
+
+    console.log("FORMULARIO");
+    console.log(form);
+    
+
     let key = this.db.agregarReceta(form);
 
     console.log(key.key);
@@ -144,6 +207,7 @@ export class PacienteComponent implements OnInit {
       edad: item.edad,
       sexo: item.sexo,
       estado: item.estado,
+      curp: item.curp,
 
       diabetes: item.diabetes,
       dificultadrespiratoria: item.dificultadrespiratoria,

@@ -48,8 +48,17 @@
                 <div class="modal-body">
                     <form [formGroup]="paciente">
                         <h2>DATOS PERSONALES</h2><hr>
-                        <label>Nombre Completo:</label>
-                        <input formControlName="nombre" type="text" class="form-control">
+                        <div class="row">
+                            <div class="col">
+                                <label>Nombre Completo:</label>
+                                <input formControlName="nombre" type="text" class="form-control">
+                            </div>
+
+                            <div class="col">
+                                <label>CURP:</label>
+                                <input formControlName="curp" type="text" class="form-control">
+                            </div>
+                        </div>
 
                         <div class="row">
                             <div class="col">
@@ -93,7 +102,7 @@
                             </div>
                         </div>
 
-                        <h2 style="margin-top: 1em;">ANTECEDENTES PERSONALES NO PATOLÓGICOS</h2>
+                        <h2 style="margin-top: 1em;">ANTECEDENTES PATOLÓGICOS</h2>
                         <hr>
 
                         <div class="row" style="text-align: center; margin-top: 1em;">
@@ -162,7 +171,7 @@
                             </div>
                         </div>
 
-                        <h2 style="margin-top: 1em;">ANTECEDENTES PERSONALES NO PATOLÓGICOS</h2>
+                        <h2 style="margin-top: 1em;">ANTECEDENTES NO PATOLÓGICOS</h2>
                         <hr>
 
                         <div class="row">
@@ -206,24 +215,27 @@
                             </div>
                         </div>
 
+                        <h2 style="margin-top: 1em;">ODONTOGRAMA</h2>
+                        <hr>
+
                         <div style="text-align: center; margin-top: 1em;">
                             <img src="../../assets/img/all_dientes.jpg" class="img-fluid" alt="Responsive image">
                         </div>
 
                         <div class="row" style="text-align: center; margin-top: 1em;">
                             <div class="col">
-                                <input formControlName="dientes" type="text" class="form-control">
                                 <label>Dientes dañados</label>
+                                <input formControlName="dientes" type="text" class="form-control">
                             </div>
 
                             <div class="col">
-                                <input formControlName="atm" type="text" class="form-control">
                                 <label>ATM</label>
+                                <input formControlName="atm" type="text" class="form-control">
                             </div>
 
                             <div class="col">
-                                <input formControlName="tejidos" type="text" class="form-control">
                                 <label>Tejidos</label>
+                                <input formControlName="tejidos" type="text" class="form-control">
                             </div>
                         </div>
                         <label>Observaciones:</label>
@@ -264,12 +276,25 @@
                         <div class="row">
                             <div class="col">
                                 <label>Diagnóstico:</label>
-                                <input class="form-control" formControlName="diagnostico">
-                            </div>
-
-                            <div class="col">
-                                <label>Terminologia:</label>
-                                <input class="form-control" formControlName="terminologia">
+                                <select class="form-control" formControlName="diagnostico">
+                                    <option value="CARIES DENTAL">CARIES DENTAL - K02</option>
+                                    <option value="CARIES LIMITADA AL ESMALTE">CARIES LIMITADA AL ESMALTE - K020</option>
+                                    <option value="CARIES DE LA DENTINA">CARIES DE LA DENTINA - K021</option>
+                                    <option value="CARIES DEL CEMENTO">CARIES DEL CEMENTO - K022</option>
+                                    <option value="CARIES DENTARIA DETENIDA">CARIES DENTARIA DETENIDA - K023</option>
+                                    <option value="CARIES CON EXPOSICION PULPAR">CARIES CON EXPOSICION PULPAR - K025</option>
+                                    <option value="OTRAS CARIES DENTALES">OTRAS CARIES DENTALES - K028</option>
+                                    <option value="CARIES DENTAL, NO ESPECIFICADA">CARIES DENTAL, NO ESPECIFICADA - K029</option>
+                                    <option value="PERIODONTOSIS">PERIODONTOSIS - K054</option>
+                                    <option value="GINGIVITIS Y ENFERMEDADES PERIODONTALES">GINGIVITIS Y ENFERMEDADES PERIODONTALES - K05</option>
+                                    <option value="PERIODONTITIS AGUDA">PERIODONTITIS AGUDA - K052</option>
+                                    <option value="PERIODONTITIS CRONICA">PERIODONTITIS CRONICA - K053</option>
+                                    <option value="ESTOMATITIS AFTOSA RECURRENTE">ESTOMATITIS AFTOSA RECURRENTE  - K120</option>
+                                    <option value="PULPITIS">PULPITIS - K040</option>
+                                    <option value="CELULITIS Y ABSCESO DE BOCA">CELULITIS Y ABSCESO DE BOCA - K122</option>
+                                    <option value="OTRO DOLOR CRONICO">OTRO DOLOR CRONICO - R522</option>
+                                    <option value="TRASTORNOS DE LA ARTICULACION TEMPOROMAXILAR">TRASTORNOS DE LA ARTICULACION TEMPOROMAXILAR - K076</option>
+                                </select>
                             </div>
                         </div>
                     </form>

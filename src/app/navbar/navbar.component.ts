@@ -17,9 +17,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     this.user = localStorage.getItem('user')
     if(this.user != null){
-      this.login = true;
-    }else{
-      this.rote.navigate(['/']);
+      this.login = true;     
     }
   }
 
@@ -29,6 +27,7 @@ export class NavbarComponent implements OnInit {
       this.login = true;
       this.ngOnInit();
     }
+    
   }
   
   logout(){

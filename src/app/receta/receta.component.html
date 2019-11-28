@@ -1,9 +1,9 @@
 <div class="container" id="contenido" *ngFor="let item of receta">
-    <div style="border: 2px solid black; border-radius: 8px; width: 68%;">
+    <div style="border: 2px solid black; border-radius: 8px; width: 68%; height: 90px;">
         <img src="../../assets/img/LOGO5.png" class="rounded float-left" alt="...">
-        <p><strong>3 av. Poniente. #106</strong></p>
-        <p><strong>Entre Calle central y 2 av. sur</strong></p>
-        <br>
+        <strong>3 av. Poniente. #106</strong><br>
+        <strong>Entre Calle central y 2 av. sur</strong><br><br>
+        
     </div>
     <br>
     
@@ -37,7 +37,7 @@
         </div>
         
     </div>
-    <br>
+
     <b style="font-size: 12px; margin-left: 41%;">FOLIO:</b> {{key}}
     <table style="width: 68%; text-align: center; font-size: 12px">
         <tr>
@@ -58,36 +58,32 @@
         </tr>
     </table>
 
-    <br>
-    <p style="font-size: 12px;">
+    <div style="font-size: 12px;">
         <b>
-            <p>DOSIS Y DURACIÓN DEL MEDICAMENTO:</p>
+            <br>DOSIS Y DURACIÓN DEL MEDICAMENTO:<br>
         </b>
         {{item.receta}}
-    </p>
+    </div>
 
-    <p style="font-size: 12px;">
+    <div style="font-size: 12px;">
         <b>
-            <p>INDICACIONES:</p>
+            INDICACIONES:<br>
         </b>
         {{item.indicaciones}}
-    </p>
-
-    <br>
-    
-    <img src="../../assets/img/qr_img.png" height="100px" width="100px">
-
-    <div style="width: 68%; text-align: center; font-size: 12px;">
-        
-            C.D. YACZIRI MENDOZA SANCHEZ
-        <br>
-
-            UNIVERSIDAD DE CIENCIAS Y ARTES DE CHIAPAS
-        
-
-        <br>
-            CED.PROF. 10947093
-        
+    </div>
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <img src="../../assets/img/qr_img.png" class="card-img">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <div class="card-text">C.D. YACZIRI MENDOZA SANCHEZ</div>
+                    <div class="card-text">UNIVERSIDAD DE CIENCIAS Y ARTES DE CHIAPAS</div>
+                    <div class="card-text"><small class="text-muted">CED.PROF. 10947093</small></div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
