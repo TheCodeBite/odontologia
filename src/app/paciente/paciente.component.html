@@ -3,35 +3,35 @@
 <div class="container-fluid" style="margin-top: 2em;">
     <app-search></app-search>
     <br>
-    <div>
-        <button data-toggle="modal" (click)="new()" data-target=".bd-example-modal-xl" class="btn btn-primary" style="font-size: 18px; border-radius: 100%;">
-            <strong>+</strong>
+    <div><br>
+        <button data-toggle="modal" (click)="new()" data-target=".bd-example-modal-xl" class="btn btn-primary" style="font-size: 18px;">
+            Agregar paciente
         </button>
     </div>
     <table class="table" style="margin-top: 1em;">
         <thead class="thead-dark">
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Teléfono</th>
-            <th scope="col">Direccion</th>
-            <th scope="col">Tipo de sangre</th>
-            <th scope="col">Crear Receta</th>
-            <th scope="col">Detalles</th>
-            <th scope="col">Historial</th>
-          </tr>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Teléfono</th>
+                <th scope="col">Direccion</th>
+                <th scope="col">Tipo de sangre</th>
+                <th scope="col">Crear Receta</th>
+                <th scope="col">Detalles</th>
+                <th scope="col">Historial</th>
+            </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of allUsers; let i = index">
-            <th scope="row">{{i + 1}}</th>
-            <td>{{item.nombre}}</td>
-            <td>{{item.telefono}}</td>
-            <td>{{item.direccion}}</td>
-            <td>{{item.sangre}}</td>
-            <td> <button class="btn btn-sm btn-primary" (click)="recetar_click(item.nombre,item.edad, item.alergia, item.sexo, i)" data-toggle="modal" data-target="#RecetaMedica">Recetar</button> </td>
-            <td> <button class="btn btn-sm btn-info" data-toggle="modal" data-target=".bd-example-modal-xl" (click)="detalles(item)">Detalles</button> </td>
-            <td> <button class="btn btn-sm btn-success" (click)="historial(i)">Historial</button> </td>
-          </tr>
+            <tr *ngFor="let item of allUsers; let i = index">
+                <th scope="row">{{i + 1}}</th>
+                <td>{{item.nombre}}</td>
+                <td>{{item.telefono}}</td>
+                <td>{{item.direccion}}</td>
+                <td>{{item.sangre}}</td>
+                <td> <button class="btn btn-sm btn-primary" (click)="recetar_click(item.nombre,item.edad, item.alergia, item.sexo, i)" data-toggle="modal" data-target="#RecetaMedica">Recetar</button> </td>
+                <td> <button class="btn btn-sm btn-info" data-toggle="modal" data-target=".bd-example-modal-xl" (click)="detalles(item)">Detalles</button> </td>
+                <td> <button class="btn btn-sm btn-success" (click)="historial(i)">Historial</button> </td>
+            </tr>
         </tbody>
     </table>
 
@@ -47,16 +47,17 @@
 
                 <div class="modal-body">
                     <form [formGroup]="paciente">
-                        <h2>DATOS PERSONALES</h2><hr>
+                        <h2>DATOS PERSONALES</h2>
+                        <hr>
                         <div class="row">
                             <div class="col">
                                 <label>Nombre Completo:</label>
-                                <input formControlName="nombre" type="text" class="form-control">
+                                <input formControlName="nombre" type="text" class="form-control" placeholder="Lauro Melendez Alabat">
                             </div>
 
                             <div class="col">
                                 <label>CURP:</label>
-                                <input formControlName="curp" type="text" class="form-control">
+                                <input formControlName="curp" type="text" class="form-control" placeholder="MAHK961230HCSRRV02">
                             </div>
                         </div>
 
@@ -68,27 +69,27 @@
                                     <option value="Hombre">Mujer</option>
                                 </select>
                             </div>
-                            
+
                             <div class="col">
                                 <label>Dirección:</label>
-                                <input formControlName="direccion" type="text" class="form-control">
+                                <input formControlName="direccion" type="text" class="form-control" placeholder="1 AV. Sur Oriente S/N">
                             </div>
 
                             <div class="col">
                                 <label>Ocupación:</label>
-                                <input type="text" formControlName="ocupacion" class="form-control">
+                                <input type="text" formControlName="ocupacion" class="form-control" placeholder="Estudiante">
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col">
                                 <label>Teléfono:</label>
-                                <input formControlName="telefono" type="tel" class="form-control">
+                                <input formControlName="telefono" type="tel" class="form-control" placeholder="9613135166">
                             </div>
 
                             <div class="col">
                                 <label>Edad:</label>
-                                <input formControlName="edad" type="number" class="form-control">
+                                <input formControlName="edad" type="number" class="form-control" placeholder="22">
                             </div>
 
                             <div class="col">
@@ -123,7 +124,7 @@
 
                             <div class="col">
                                 <input formControlName="cardiopatias" type="checkbox" value="1" class="form-check-input">
-                                <label>Cardiopatias</label>
+                                <label>Cardiopatías</label>
                             </div>
                         </div>
 
@@ -171,47 +172,46 @@
                             </div>
                         </div>
 
+                        <label>Otros(espeficar):</label>
+                        <input class="form-control" formControlName="hereditarios" type="text" placeholder="Diabetes, Hipertensión y Cardiopatias">
+
+
                         <h2 style="margin-top: 1em;">ANTECEDENTES NO PATOLÓGICOS</h2>
                         <hr>
 
                         <div class="row">
                             <div class="col">
                                 <label>Tipo de sange:</label>
-                                <input formControlName="sangre" type="text" class="form-control">
+                                <input formControlName="sangre" type="text" class="form-control" placeholder="O+">
                             </div>
 
                             <div class="col">
-                                <label>talla:</label>
-                                <input formControlName="talla" type="number" class="form-control">
+                                <label>Talla(cm):</label>
+                                <input formControlName="talla" type="number" class="form-control" placeholder="32">
                             </div>
 
                             <div class="col">
-                                <label>Peso:</label>
-                                <input formControlName="peso" type="number" class="form-control">
+                                <label>Peso(kg):</label>
+                                <input formControlName="peso" type="number" class="form-control" placeholder="34">
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col">
                                 <label>Adicciones:</label>
-                                <textarea formControlName="adicciones" type="text" class="form-control"> </textarea>
-                            </div>
-
-                            <div class="col">
-                                <label>Hereditarios:</label>
-                                <textarea formControlName="hereditarios" type="text" class="form-control"> </textarea>
+                                <textarea formControlName="adicciones" type="text" class="form-control" placeholder="Tabaco, Alcohol"> </textarea>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col">
-                                <label>Glucosa en la sangre:</label>
-                                <input formControlName="glucosa" type="number" class="form-control">
+                                <label>Glucosa en la sangre(mg/dl):</label>
+                                <input formControlName="glucosa" type="number" class="form-control" placeholder="90">
                             </div>
 
                             <div class="col">
-                                <label>T/A (tensión arterial):</label>
-                                <input formControlName="ta" type="number" class="form-control">
+                                <label>Tensión arterial(mm/Hg):</label>
+                                <input formControlName="ta" type="text" class="form-control" placeholder="120/80">
                             </div>
                         </div>
 
@@ -224,34 +224,34 @@
 
                         <div class="row" style="text-align: center; margin-top: 1em;">
                             <div class="col">
-                                <label>Dientes dañados</label>
-                                <input formControlName="dientes" type="text" class="form-control">
+                                <label>Dientes dañados:</label>
+                                <input formControlName="dientes" type="text" class="form-control" placeholder="18,17 y 42">
                             </div>
 
                             <div class="col">
-                                <label>ATM</label>
-                                <input formControlName="atm" type="text" class="form-control">
+                                <label>ATM(mandíbula):</label>
+                                <input formControlName="atm" type="text" class="form-control" placeholder="Problema en la mandíbula">
                             </div>
 
                             <div class="col">
-                                <label>Tejidos</label>
-                                <input formControlName="tejidos" type="text" class="form-control">
+                                <label>Tejidos(Especificar):</label>
+                                <input formControlName="tejidos" type="text" class="form-control" placeholder="Dañado/Sano">
                             </div>
                         </div>
                         <label>Observaciones:</label>
-                        <textarea formControlName="observaciones" class="form-control"></textarea>
-                        
+                        <textarea formControlName="observaciones" class="form-control" placeholder="Colocar información relevante"></textarea>
+
                         <button *ngIf="add" style="margin-top: 1em;" data-dismiss="modal" type="submit" class="btn btn-success btn-lg btn-block" (click)="register(paciente.value)">Agregar</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    
-      
+
+
     <!-- Modal Receta Medica-->
     <div class="modal fade bd-example-modal-lg" id="RecetaMedica" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Receta para: {{paciente_name}}</h5>
@@ -263,16 +263,16 @@
                     <form [formGroup]="receta">
                         <div class="row">
                             <div class="col">
-                                <label >Indicaciones:</label>
-                                <textarea formControlName="indicaciones" class="form-control"></textarea>
+                                <label>Indicaciones:</label>
+                                <textarea formControlName="indicaciones" class="form-control" placeholder="Evitar comer sólidos"></textarea>
                             </div>
 
                             <div class="col">
                                 <label>Receta Médica:</label>
-                                <textarea formControlName="receta" class="form-control"></textarea>
+                                <textarea formControlName="receta" class="form-control" placeholder="Tomar una pastilla paracetamol"></textarea>
                             </div>
                         </div>
-                        
+
                         <div class="row">
                             <div class="col">
                                 <label>Diagnóstico:</label>
@@ -301,11 +301,11 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="crearReceta(receta.value)" > Crear</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="crearReceta(receta.value)"> Crear</button>
                 </div>
             </div>
-            </div>
         </div>
+    </div>
 </div>
 
 <app-footer></app-footer>

@@ -3,14 +3,14 @@
         <img src="../../assets/img/LOGO5.png" class="rounded float-left" alt="...">
         <strong>3 av. Poniente. #106</strong><br>
         <strong>Entre Calle central y 2 av. sur</strong><br><br>
-        
+
     </div>
     <br>
-    
+
     <div style="width: 68%; text-align: center; font-size: 12px;">
         <div class="row">
             <div class="col">
-                PACIENTE: 
+                PACIENTE:
             </div>
 
             <div class="col">
@@ -35,7 +35,7 @@
                 FECHA: {{item.fecha}}
             </div>
         </div>
-        
+
     </div>
 
     <b style="font-size: 12px; margin-left: 41%;">FOLIO:</b> {{key}}
@@ -61,15 +61,13 @@
     <div style="font-size: 12px;">
         <b>
             <br>DOSIS Y DURACIÓN DEL MEDICAMENTO:<br>
-        </b>
-        {{item.receta}}
+        </b> {{item.receta}}
     </div>
 
     <div style="font-size: 12px;">
         <b>
             INDICACIONES:<br>
-        </b>
-        {{item.indicaciones}}
+        </b> {{item.indicaciones}}
     </div>
     <div class="card mb-3" style="max-width: 540px;">
         <div class="row no-gutters">
@@ -78,7 +76,7 @@
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                    <div class="card-text">C.D. YACZIRI MENDOZA SANCHEZ</div>
+                    <div class="card-text">DRA. YACZIRI MENDOZA SANCHEZ</div>
                     <div class="card-text">UNIVERSIDAD DE CIENCIAS Y ARTES DE CHIAPAS</div>
                     <div class="card-text"><small class="text-muted">CED.PROF. 10947093</small></div>
                 </div>
@@ -89,6 +87,6 @@
 
 <div class="container">
     <div style="width: 68%; text-align: center; font-size: 12px;">
-        <button class="btn btn-primary btn-sm" (click)="captureScreen()">Imprimir</button>
+        <button class="btn btn-primary btn-sm" (click)="captureScreen()">Descargar</button>
     </div>
 </div>

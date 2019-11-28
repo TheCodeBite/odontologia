@@ -33,7 +33,7 @@ export class PacienteComponent implements OnInit {
 
   new(){
     this.add = true;
-    this.title = "nuevo paciente";
+    this.title = "Nuevo paciente";
     this.paciente.reset();
   }
 
