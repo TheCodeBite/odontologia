@@ -29,7 +29,7 @@
                 <td>{{item.direccion}}</td>
                 <td>{{item.sangre}}</td>
                 <td> <button class="btn btn-sm btn-primary" (click)="recetar_click(item.nombre,item.edad, item.alergia, item.sexo, i)" data-toggle="modal" data-target="#RecetaMedica">Recetar</button> </td>
-                <td> <button class="btn btn-sm btn-info" data-toggle="modal" data-target=".bd-example-modal-xl" (click)="detalles(item)">Detalles</button> </td>
+                <td> <button class="btn btn-sm btn-info" data-toggle="modal" data-target=".bd-example-modal-xl" (click)="detalles(item, i)">Detalles</button> </td>
                 <td> <button class="btn btn-sm btn-success" (click)="historial(i)">Historial</button> </td>
             </tr>
         </tbody>
@@ -242,6 +242,8 @@
                         <textarea formControlName="observaciones" class="form-control" placeholder="Colocar información relevante"></textarea>
 
                         <button *ngIf="add" style="margin-top: 1em;" data-dismiss="modal" type="submit" class="btn btn-success btn-lg btn-block" (click)="register(paciente.value)">Agregar</button>
+                        <button *ngIf="add == false" style="margin-top: 1em;" data-dismiss="modal" type="submit" class="btn btn-success btn-lg btn-block" (click)="update(paciente.value)">Editar</button>
+
                     </form>
                 </div>
             </div>

@@ -32,7 +32,7 @@ export class NavbarComponent implements OnInit {
   
   logout(){
     localStorage.clear();
-    this.ngOnInit();
     this.login = false;
+    this.ngOnInit();
   }
 }

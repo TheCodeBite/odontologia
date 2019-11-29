@@ -195,8 +195,9 @@ export class PacienteComponent implements OnInit {
     this.route.navigate(['/historial/' + this.keys[posicion]])
   }
 
-  detalles(item: any){
-    this.add = false
+  detalles(item: any, posicion){
+    this.index = posicion;
+    this.add = false;
     this.title = item.nombre;
 
     this.paciente = this.fb.group({
@@ -236,5 +237,14 @@ export class PacienteComponent implements OnInit {
       observaciones: item.observaciones
     })
     console.log(this.paciente.value);
+  }
+
+  update(form:any){
+    console.log("nuevo formulario");
+    console.log(form);
+    console.log("key:" + this.keys[this.index]);
+    
+    this.db.updatePaciente(this.keys[this.index], form);
+    this.ngOnInit();
   }
 }

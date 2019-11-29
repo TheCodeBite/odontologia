@@ -25,6 +25,10 @@ export class PacienteService {
     return this.firebase.list('recetas').update(key, receta); 
   }
 
+  updatePaciente(key, paciente){
+    return this.firebase.list('paciente').update(key, paciente);
+  }
+
   getKey(){
     let keys = [];
 
